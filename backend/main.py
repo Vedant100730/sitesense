@@ -149,19 +149,12 @@ async def debug_log_middleware(request: Request, call_next):
 # 2. CORS (Outermost Layer)
 # For the widget and local development, we need to be permissive.
 # Since we use Bearer tokens (headers), we don't need allow_credentials=True.
-cors_origins = ["*"]
-if settings.ENVIRONMENT != "development":
-    if settings.FRONTEND_URL:
-        cors_origins = [settings.FRONTEND_URL.rstrip("/")]
-    else:
-        logger.warning("FRONTEND_URL not set in production! CORS is open (wildcard).")
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=False,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-    allow_headers=["Content-Type", "Authorization", "X-Requested-With", "Accept", "X-Bot-Id"],
+    allow_headers=["*"],
 )
 
 # ---------------------------------------------------------------------------
