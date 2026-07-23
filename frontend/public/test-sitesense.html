@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SiteSense Bot Test Page</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 40px 20px;
+    }
+    h1 { font-size: 2.5rem; font-weight: 800; color: #fff; text-align: center; }
+    h1 span { color: #818cf8; }
+    p { color: #94a3b8; text-align: center; max-width: 500px; line-height: 1.6; }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 28px 32px;
+      max-width: 500px;
+      width: 100%;
+    }
+    .card h2 { font-size: 1.1rem; color: #fff; margin-bottom: 8px; }
+    .card p { font-size: 0.9rem; color: #64748b; text-align: left; }
+    .badge {
+      display: inline-block;
+      background: #312e81;
+      color: #a5b4fc;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to <span>SiteSense AI</span></h1>
+  <p>This is a test page. Click the chat bubble in the bottom-right corner to talk to the AI bot.</p>
+
+  <div class="card">
+    <span class="badge">AI Powered</span>
+    <h2>Ask me anything</h2>
+    <p>The chatbot on this page is powered by SiteSense AI. It can answer questions based on the sources you've added in your dashboard.</p>
+  </div>
+
+  <div class="card">
+    <span class="badge">How it works</span>
+    <h2>Knowledge Base</h2>
+    <p>Add URLs or upload documents in your SiteSense dashboard, and the bot will use that knowledge to answer visitor questions in real time.</p>
+  </div>
+
+  <!-- SITESENSE BOT EMBED -->
+  <script
+    src="https://sitesense-flax.vercel.app/widget.js"
+    data-bot-id="3f1lhwso"
+    data-api="https://sitesense-production-542d.up.railway.app"
+    data-position="right">
+  </script>
+</body>
+</html>
