@@ -26,8 +26,20 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // Refresh session if expired
-  const { data: { user } } = await supabase.auth.getUser()
+  // Refresh session if expired — with timeout to avoid 504
+  let user = null
+  try {
+    const result = await Promise.race([
+      supabase.auth.getUser(),
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("timeout")), 5000)
+      ),
+    ])
+    user = (result as { data: { user: unknown } }).data.user
+  } catch {
+    // On timeout or error, let the request through
+    return supabaseResponse
+  }
 
   const { pathname } = request.nextUrl
 
